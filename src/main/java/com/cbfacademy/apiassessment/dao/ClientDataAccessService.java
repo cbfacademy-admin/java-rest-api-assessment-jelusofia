@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.stereotype.Repository;
+
 import com.cbfacademy.apiassessment.model.Client;
 
+@Repository("Dao")
 public class ClientDataAccessService implements ClientDao {
     private static List<Client> DB = new ArrayList<>();
 
