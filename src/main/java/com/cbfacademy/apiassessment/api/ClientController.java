@@ -1,13 +1,9 @@
 package com.cbfacademy.apiassessment.api;
 
 import java.util.List;
-
+import java.util.UUID;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.cbfacademy.apiassessment.model.Client;
 import com.cbfacademy.apiassessment.service.ClientService;
@@ -32,10 +28,13 @@ public class ClientController {
         return clientService.getAllClients();
     }
 
-    @GetMapping
-    public Client getClientbyId(UUID ID) {
-        return clientService.getAllClients();
+    @GetMapping(path = "{id}")
+    public Client getClientById(@PathVariable("id") UUID id) {
+        return clientService.getClientById(id)
+                .orElse(null);
     }
+
+
 
     
 }
