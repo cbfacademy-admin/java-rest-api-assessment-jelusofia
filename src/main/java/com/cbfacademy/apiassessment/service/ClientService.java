@@ -34,6 +34,12 @@ public class ClientService {
         return clientDao.selectClientById(id);
     }
 
-    
+    public int deleteClient(UUID id){
+        return  clientDao.deleteClientById(id);       
+    }
+
+    public int updateClient(UUID id, Client client){
+        return  clientDao.updateClientById(id, newClient);       
+    }
 
 }

@@ -36,14 +36,17 @@ public class ClientDataAccessService implements ClientDao {
 
     @Override
     public int deleteClientById(UUID id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteClientById'");
+        Optional<Client> clientMaybe = selectClientById(id);
+        if (clientMaybe.isEmpty()) {
+            return 0;
+        }
+        DB.remove(clientMaybe.get());
+        return 1;
     }
 
     @Override
     public int updateClientById(UUID id, Client client) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateClientById'");
+       return selectClientById(id);
     }
 
 
