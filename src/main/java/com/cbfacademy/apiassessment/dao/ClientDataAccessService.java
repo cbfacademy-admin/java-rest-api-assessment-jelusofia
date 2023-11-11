@@ -45,12 +45,12 @@ public class ClientDataAccessService implements ClientDao {
     }
 
     @Override
-    public int updateClientById(UUID id, Client client) {
+    public int updateClientById(UUID id, Client update) {
        return selectClientById(id)
-                .map(p -> { //note: learn more about map
-                    int indexOfClientToDelete = DB.indexOf(client);
-                    if (indexOfClientToDelete >= 0){
-                        DB.set(indexOfClientToDelete, client);
+                .map(client -> { //note: learn more about map
+                    int indexOfClientToUpdate = DB.indexOf(client);
+                    if (indexOfClientToUpdate >= 0){
+                        DB.set(indexOfClientToUpdate, new Client(id, update.getName()));
                         return 1;
                     }
                     return 0;

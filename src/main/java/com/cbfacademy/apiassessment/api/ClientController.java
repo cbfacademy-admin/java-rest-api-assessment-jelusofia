@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.UUID;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
+import org.springframework.validation.annotation.Validated;
 
 import com.cbfacademy.apiassessment.model.Client;
 import com.cbfacademy.apiassessment.service.ClientService;
@@ -19,9 +21,10 @@ public class ClientController {
     }
 
     @PostMapping
-    public void addClient(@RequestBody Client client){
+    public void addClient( @Validated @NonNull @RequestBody Client client){
         clientService.addClient(client);
     }
+    //@valid and @nonnull not working
 
     @GetMapping
     public List<Client> getAllClients() {
@@ -38,7 +41,7 @@ public class ClientController {
         clientService.deleteClient(id);
     }
     @PutMapping(path = "{id}")
-    public void updateClient(@PathVariable("id") UUID id,@RequestBody Client clientToUpdate ) {
+    public void updateClient(@PathVariable("id") UUID id, @Validated @NonNull @RequestBody Client clientToUpdate ) {
         clientService.updateClient(id, clientToUpdate);
     }
 
