@@ -33,6 +33,14 @@ public class ClientController {
         return clientService.getClientById(id)
                 .orElse(null);
     }
+    @DeleteMapping(path = "{id}")
+    public void deleteClientById(@PathVariable("id") UUID id) {
+        clientService.deleteClient(id);
+    }
+    @PutMapping(path = "{id}")
+    public void updateClient(@PathVariable("id") UUID id,@RequestBody Client clientToUpdate ) {
+        clientService.updateClient(id, clientToUpdate);
+    }
 
 
 
