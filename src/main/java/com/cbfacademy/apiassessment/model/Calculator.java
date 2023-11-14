@@ -2,7 +2,7 @@ package com.cbfacademy.apiassessment.model;
 
 import java.util.UUID;
 
-public class Client {
+public class Calculator {
     private final UUID id; //transaction UUID
     private final String name; //
     private final int numberOfShares; //
@@ -14,7 +14,7 @@ public class Client {
     double profit;
 
 
-    public Client(UUID id, String name, int numberOfShares, double buyingPrice, double sellingPrice, double comission){
+    public Calculator(UUID id, String name, int numberOfShares, double buyingPrice, double sellingPrice, double comission){
         this.id = id;
         this.name =name;
         this.numberOfShares = numberOfShares;
