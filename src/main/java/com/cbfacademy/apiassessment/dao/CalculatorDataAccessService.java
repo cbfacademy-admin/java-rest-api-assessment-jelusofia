@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.cbfacademy.apiassessment.model.Calculator;
 
 @Repository("Dao")
-public class ClientDataAccessService implements ClientDao {
+public class ClientDataAccessService implements CalculatorDao {
     private static List<Calculator> DB = new ArrayList<>(); //Write it to JSON file using gson library, also need to update and delete?
 
 
