@@ -11,7 +11,7 @@ import com.cbfacademy.apiassessment.model.Client;
 
 @Repository("Dao")
 public class ClientDataAccessService implements ClientDao {
-    private static List<Client> DB = new ArrayList<>();
+    private static List<Client> DB = new ArrayList<>(); //Write it to JSON file using gson library
 
 
     @Override

@@ -31,7 +31,7 @@ public class ClientService {
     }
 
     public Optional<Client> getClientById(UUID id) {
-        return clientDao.selectClientById(id);
+        return clientDao.selectClientById(id); //algo
     }
 
     public int deleteClient(UUID id){
@@ -40,6 +40,6 @@ public class ClientService {
 
     public int updateClient(UUID id, Client newClient){
         return  clientDao.updateClientById(id, newClient);       
-    }
+    }//update calculation by calculation id
 
 }
