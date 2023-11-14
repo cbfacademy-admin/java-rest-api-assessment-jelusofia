@@ -1,6 +1,6 @@
 package com.cbfacademy.apiassessment.service;
 
-import com.cbfacademy.apiassessment.model.Client;
+import com.cbfacademy.apiassessment.model.Calculator;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.cbfacademy.apiassessment.dao.ClientDao;
-
+//change to calculatorservice.java
 @Service
 public class ClientService {
     private final ClientDao clientDao;
@@ -21,16 +21,16 @@ public class ClientService {
         this.clientDao = clientDao;
     }
 
-    public int addClient(Client client){
+    public int addClient(Calculator client){
         return  clientDao.insertClient(client);
         //id double check 21:00 timestamp
     }
 
-    public List<Client> getAllClients() {
+    public List<Calculator> getAllClients() {
         return clientDao.selectAllClients();
     }
 
-    public Optional<Client> getClientById(UUID id) {
+    public Optional<Calculator> getClientById(UUID id) {
         return clientDao.selectClientById(id); //algo
     }
 
@@ -38,7 +38,7 @@ public class ClientService {
         return  clientDao.deleteClientById(id);       
     }
 
-    public int updateClient(UUID id, Client newClient){
+    public int updateClient(UUID id, Calculator newClient){
         return  clientDao.updateClientById(id, newClient);       
     }//update calculation by calculation id
 

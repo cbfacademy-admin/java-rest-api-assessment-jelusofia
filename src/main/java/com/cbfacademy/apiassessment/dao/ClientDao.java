@@ -1,24 +1,24 @@
 package com.cbfacademy.apiassessment.dao;
 
-import com.cbfacademy.apiassessment.model.Client;
+import com.cbfacademy.apiassessment.model.Calculator;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 public interface ClientDao {
-    int insertClient(UUID id, Client client);
+    int insertClient(UUID id, Calculator client);
 
-    default int insertClient(Client client){
+    default int insertClient(Calculator client){
         UUID id = UUID.randomUUID();
         return insertClient(id, client);
     }
 
-    List<Client> selectAllClients();
+    List<Calculator> selectAllClients();
 
-    Optional<Client> selectClientById(UUID id);
+    Optional<Calculator> selectClientById(UUID id);
 
     int deleteClientById(UUID id);
 
-    int updateClientById(UUID id, Client client);
+    int updateClientById(UUID id, Calculator client);
 }
