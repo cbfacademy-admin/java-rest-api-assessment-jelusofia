@@ -15,6 +15,8 @@ public interface CalculatorDao {
 
     List<Calculator> selectAllCalculation();
 
+    Double profitCalculation(Calculator calculator);
+
     Optional<Calculator> selectCalculationById(UUID id);
 
     int deleteCalculationById(UUID id);
