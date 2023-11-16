@@ -12,7 +12,6 @@ import com.cbfacademy.apiassessment.model.StockTransaction;
 import com.cbfacademy.apiassessment.service.StockTransactionService;
 import com.cbfacademy.apiassessment.service.StockTransactionServiceImpl;
 
-@SpringBootApplication
 @RequestMapping("api/v1/pnlcalculator")
 @RestController
 public class StockTransactionController {

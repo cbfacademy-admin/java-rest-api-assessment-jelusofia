@@ -29,11 +29,11 @@ public class StockTransactionServiceImpl implements StockTransactionService {
 
     @Override
     public List<StockTransaction> getAllTransactions() {
-        return calculationDao.selectAllCalculation();
+        return calculationDao.selectAllTransactions();
     }
     @Override
     public Optional<StockTransaction> getTransactionById(UUID id) {
-        return calculationDao.selectCalculationById(id); //algo
+        return calculationDao.selectTransactionById(id); //algo
     }
     
     @Override

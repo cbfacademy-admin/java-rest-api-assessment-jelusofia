@@ -11,19 +11,18 @@ import com.cbfacademy.apiassessment.model.StockTransaction;
 
 @Repository("Dao")
 public class DataAccessService implements StockTransactionDao {
-    private static List<StockTransaction> DB = new ArrayList<>(); //Write it to JSON file using gson library, also need to update and delete?
+    private static List<StockTransaction> DB = new ArrayList<>();
 
 
     @Override
-    public int insertCalculation(UUID id, StockTransaction calculator) {
-        DB.add(new StockTransaction(id, calculator.getName(), calculator.getQuantity(), calculator.getBuyingPrice(), calculator.getSellingPrice(), calculator.getComission(), calculator.getProfit()));
-        return 1;
-       // throw new UnsupportedOperationException("Unimplemented method 'insertClient'");
-    } //submit calculation
+    public int insertStockTransaction(UUID id, StockTransaction transaction) {
+        DB.add(new StockTransaction(id, transaction.getName(), transaction.getQuantity(), transaction.getBuyingPrice(), transaction.getSellingPrice(), transaction.getCommission(), transaction.getProfit()));
+        return 1; 
+    } 
 
 
     @Override
-    public List<StockTransaction> selectAllCalculation() {
+    public List<StockTransaction> selectAllTransactions() {
         return DB;
     }
 
@@ -35,16 +34,15 @@ public class DataAccessService implements StockTransactionDao {
 
 
     @Override
-    public Optional<StockTransaction> selectCalculationById(UUID id) {
-        // TODO Auto-generated method stub
+    public Optional<StockTransaction> selectTransactionById(UUID id) {
         return DB.stream()
                 .filter(client -> client.getId().equals(id))
                 .findFirst();
     }
 
     @Override
-    public int deleteCalculationById(UUID id) {
-        Optional<StockTransaction> clientMaybe = selectCalculationById(id);
+    public int deleteTransactionById(UUID id) {
+        Optional<StockTransaction> clientMaybe = selectTransactionById(id);
         if (clientMaybe.isEmpty()) {
             return 0;
         }
@@ -53,12 +51,12 @@ public class DataAccessService implements StockTransactionDao {
     }
 
     @Override
-    public int updateCalculationById(UUID id, StockTransaction update) {
-       return selectCalculationById(id)
+    public int updateTransactionById(UUID id, StockTransaction update) {
+       return selectTransactionById(id)
                 .map(client -> { //note: learn more about map
                     int indexOfClientToUpdate = DB.indexOf(client);
                     if (indexOfClientToUpdate >= 0){
-                        DB.set(indexOfClientToUpdate, new StockTransaction(id, update.getName(), update.getQuantity(), update.getBuyingPrice(), update.getSellingPrice(), update.getComission(), update.getProfit()));
+                        DB.set(indexOfClientToUpdate, new StockTransaction(id, update.getName(), update.getQuantity(), update.getBuyingPrice(), update.getSellingPrice(), update.getCommission(), update.getProfit()));
                         return 1;
                     }
                     return 0;

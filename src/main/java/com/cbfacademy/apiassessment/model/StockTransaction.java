@@ -4,13 +4,12 @@ import java.util.UUID;
 /*ToDo's:
 - add validation
 - add comments
-
 */
+
 public class StockTransaction {
     private final UUID id; //transaction UUID
     private final String name; //
     private final int quantity; //
-    // (need to check if int can be use din calcs with doubles)
     private final double buyingPrice;
     private final double sellingPrice;
     private final double commission;

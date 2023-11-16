@@ -1,25 +1,24 @@
 package com.cbfacademy.apiassessment.dao;
-
 import com.cbfacademy.apiassessment.model.StockTransaction;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 public interface StockTransactionDao {
-    int insertCalculation(UUID id, StockTransaction calculator);
+    int insertStockTransaction(UUID id, StockTransaction transaction);
 
-    default int insertCalculation(StockTransaction calculator){
-        UUID id = UUID.randomUUID();
-        return insertCalculation(id, calculator);
+    default int insertStockTransaction(StockTransaction transaction){
+        //UUID id = UUID.randomUUID();
+        return insertStockTransaction(UUID.randomUUID(), transaction);
     }
 
-    List<StockTransaction> selectAllCalculation();
+    List<StockTransaction> selectAllTransactions();
 
-    Double profitCalculation(StockTransaction calculator);
+    Double profitCalculation(StockTransaction transaction);
 
-    Optional<StockTransaction> selectCalculationById(UUID id);
+    Optional<StockTransaction> selectTransactionById(UUID id);
 
-    int deleteCalculationById(UUID id);
+    int deleteTransactionById(UUID id);
 
-    int updateCalculationById(UUID id, StockTransaction calculator);
+    int updateTransactionById(UUID id, StockTransaction transaction);
 }
