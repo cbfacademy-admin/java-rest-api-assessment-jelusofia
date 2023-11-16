@@ -13,11 +13,11 @@ import com.cbfacademy.apiassessment.model.StockTransaction;
 
 @Service
 public class StockTransactionServiceImpl implements StockTransactionService {
-    private StockTransactionDao calculationDao;
+    private StockTransactionDao transactionDao;
 
     @Autowired
-    public void StockTransactionService(@Qualifier("Dao") StockTransactionDao calculationDao) {
-        this.calculationDao = calculationDao;
+    public void StockTransactionService(@Qualifier("Dao") StockTransactionDao transactionDao) {
+        this.transactionDao = transactionDao;
     }
 
     @Override
@@ -29,11 +29,11 @@ public class StockTransactionServiceImpl implements StockTransactionService {
 
     @Override
     public List<StockTransaction> getAllTransactions() {
-        return calculationDao.selectAllTransactions();
+        return transactionDao.selectAllTransactions();
     }
     @Override
     public Optional<StockTransaction> getTransactionById(UUID id) {
-        return calculationDao.selectTransactionById(id); //algo
+        return transactionDao.selectTransactionById(id); //algo
     }
     
     @Override
