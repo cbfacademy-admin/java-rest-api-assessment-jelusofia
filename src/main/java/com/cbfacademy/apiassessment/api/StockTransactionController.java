@@ -22,6 +22,7 @@ public class StockTransactionController {
         this.transactionService = transactionService;
     }
 
+
     @PostMapping
     public void addTransaction( @Validated @NonNull @RequestBody StockTransaction transaction){
         transactionService.addTransaction(transaction);

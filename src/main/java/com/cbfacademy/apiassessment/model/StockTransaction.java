@@ -24,7 +24,7 @@ public class StockTransaction {
         this.buyingPrice = buyingPrice;
         this.sellingPrice = sellingPrice;
         this.commission = commission;
-        this.profit = profit;
+        this.profit = calculateProfit();
     }
 
     public UUID getId(){
@@ -47,6 +47,10 @@ public class StockTransaction {
     }
     public Double getProfit(){
         return profit;
+    }
+
+    public double calculateProfit() {
+        return (sellingPrice * quantity) - (buyingPrice * quantity) - commission;
     }
 
 
