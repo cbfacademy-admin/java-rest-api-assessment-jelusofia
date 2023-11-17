@@ -26,7 +26,7 @@ public class DataAccessService implements StockTransactionDao {
             this.DB.addAll(jsonFileHandler.readTransactions());
         } catch (IOException e) {
             logger.error("An error occurred while reading/writing to the JSON file", e);
-            throw new RuntimeException("Failed to initialize DataAccessService", e);
+            //throw new RuntimeException("Failed to initialize DataAccessService", e);
         }
     }
 
@@ -88,7 +88,7 @@ public class DataAccessService implements StockTransactionDao {
             jsonFileHandler.writeTransactions(DB);
         } catch (IOException e) {
             logger.error("An error occurred while reading/writing (saving) to the JSON file", e);
-            throw new RuntimeException("Failed to initialize DataAccessService", e);
+            //throw new RuntimeException("Failed to initialize DataAccessService", e);
         }
     }
 
