@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProfitAndLossCalculator {
 
-    public double calculateProfit(double buyingPrice, double sellingPrice, double quantity, double commission) {
+    public double calculateProfits(double buyingPrice, double sellingPrice, double quantity, double commission) {
         // Implement your profit calculation logic here
         // ...
         return 0.2;

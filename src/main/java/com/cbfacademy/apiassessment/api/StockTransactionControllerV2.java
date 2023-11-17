@@ -11,7 +11,7 @@ import org.springframework.validation.annotation.Validated;
 import com.cbfacademy.apiassessment.model.StockTransaction;
 import com.cbfacademy.apiassessment.service.StockTransactionService;
 import com.cbfacademy.apiassessment.service.StockTransactionServiceImpl;
-
+@SpringBootApplication
 @RequestMapping("api/v2/pnlcalculator")
 @RestController
 public class StockTransactionControllerV2 {
@@ -32,6 +32,17 @@ public class StockTransactionControllerV2 {
         StockTransaction transaction = new StockTransaction(UUID.randomUUID(), name, quantity, buyingPrice, sellingPrice, commission, 0.0);
         return transaction.calculateProfit();
     }
+
+   /*  @GetMapping("/orderByPrice") //use algo
+    public double calculateProfit(
+            @RequestParam String name,
+            @RequestParam double sellingPrice,
+            @RequestParam int quantity,
+            @RequestParam double buyingPrice,
+            @RequestParam double commission) {
+        StockTransaction transaction = new StockTransaction(UUID.randomUUID(), name, quantity, buyingPrice, sellingPrice, commission, 0.0);
+        return transaction.calculateProfit();
+    }*/
 
 
     @PostMapping
