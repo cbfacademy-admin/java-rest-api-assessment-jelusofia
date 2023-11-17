@@ -20,9 +20,14 @@ public class JsonFileHandler {
     }
 
     public List<StockTransaction> readTransactions() throws IOException {
-        try (FileReader fileReader = new FileReader(jsonFile)) {
-            Type type = new TypeToken<List<StockTransaction>>() {}.getType();
-            return gson.fromJson(fileReader, type);
+        List<StockTransaction> transactions = new ArrayList<>();
+
+        if (jsonFile.exists() && jsonFile.length() > 0) {
+            try (FileReader fileReader = new FileReader(jsonFile)) {
+                Type type = new TypeToken<List<StockTransaction>>() {}.getType();
+                transactions = gson.fromJson(fileReader, type);
+                //return gson.fromJson(fileReader, type);
+            }
         }
     }
 
