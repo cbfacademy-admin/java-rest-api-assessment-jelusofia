@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.cbfacademy.apiassessment.model.StockTransaction;
@@ -20,10 +21,16 @@ public class JsonFileHandler {
     }
 
     public List<StockTransaction> readTransactions() throws IOException {
-        try (FileReader fileReader = new FileReader(jsonFile)) {
-            Type type = new TypeToken<List<StockTransaction>>() {}.getType();
-            return gson.fromJson(fileReader, type);
+        List<StockTransaction> transactions = new ArrayList<>();
+
+        if (jsonFile.exists() && jsonFile.length() > 0) {
+            try (FileReader fileReader = new FileReader(jsonFile)) {
+                Type type = new TypeToken<List<StockTransaction>>() {}.getType();
+                transactions = gson.fromJson(fileReader, type);
+                //return gson.fromJson(fileReader, type);
+            }
         }
+        return transactions;    
     }
 
     public void writeTransactions(List<StockTransaction> transactions) throws IOException {

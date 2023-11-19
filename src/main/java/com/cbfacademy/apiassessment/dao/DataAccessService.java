@@ -23,10 +23,14 @@ public class DataAccessService implements StockTransactionDao {
     public DataAccessService(@Value("${json.file.path}") String jsonFilePath) {
         this.jsonFileHandler = new JsonFileHandler(jsonFilePath);
         try {
-            this.DB.addAll(jsonFileHandler.readTransactions());
+            List<StockTransaction> transactions = jsonFileHandler.readTransactions();
+            
+            // Add null check before adding elements to DB
+            if (transactions != null) {
+                this.DB.addAll(transactions);
+            }
         } catch (IOException e) {
             logger.error("An error occurred while reading/writing to the JSON file", e);
-            throw new RuntimeException("Failed to initialize DataAccessService", e);
         }
     }
 
