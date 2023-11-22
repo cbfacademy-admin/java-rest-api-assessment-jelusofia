@@ -15,6 +15,27 @@ import com.google.gson.reflect.TypeToken;
 public class JsonFileHandler {
     private final Gson gson = new Gson();
     private final File jsonFile;
+    private FileWriter fileWriter;  // Added field for dependency injection for the purpose if testing
+    private Gson gsonInstance;  // Added field for dependency injection for the purpose if testing
+
+
+    // Getter and setter for FileWriter
+    public FileWriter getFileWriter() {
+        return fileWriter;
+    }
+
+    public void setFileWriter(FileWriter fileWriter) {
+        this.fileWriter = fileWriter;
+    }
+
+    // Getter and setter for Gson
+    public Gson getGson() {
+        return gsonInstance;
+    }
+
+    public void setGson(Gson gsonInstance) {
+        this.gsonInstance = gsonInstance;
+    }
 
     public JsonFileHandler(String filePath) {
         this.jsonFile = new File(filePath);
@@ -37,5 +58,10 @@ public class JsonFileHandler {
         try (FileWriter fileWriter = new FileWriter(jsonFile)) {
             gson.toJson(transactions, fileWriter);
         }
+    }
+    
+    public String transactionsListToJson(List<StockTransaction> transactions) {
+        Type transactionListType = new TypeToken<List<StockTransaction>>() {}.getType();
+        return gson.toJson(transactions, transactionListType);
     }
 }

@@ -85,9 +85,5 @@ public class StockTransactionTest {
 
         assertEquals(profit, actualProfit, 0.001);
     }
-
-
-    
-
     
 }

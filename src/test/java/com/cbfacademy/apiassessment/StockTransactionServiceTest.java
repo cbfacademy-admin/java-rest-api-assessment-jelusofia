@@ -1,4 +1,4 @@
-package com.cbfacademy.apiassessment.test;
+package com.cbfacademy.apiassessment;
 
 public class StockTransactionServiceTest {
     
