@@ -21,9 +21,9 @@ public class StockTransactionServiceImpl implements StockTransactionService {
     }
 
     @Override
-    public void addTransaction(StockTransaction transaction){
+    public int addTransaction(StockTransaction transaction){
         
-       // return  calculationDao.insertCalculation(calculation);
+       return transactionDao.insertStockTransaction(transaction);
         //id double check 21:00 timestamp
     }//profit calculation here
 
@@ -38,7 +38,7 @@ public class StockTransactionServiceImpl implements StockTransactionService {
     
     @Override
     public void deleteTransaction(UUID id){
-       // return  calculationDao.deleteCalculationById(id);       
+       return  calculationDao.deleteTransactionById(id);       
     }
     @Override
     public void updateTransaction(UUID id, StockTransaction newClient){

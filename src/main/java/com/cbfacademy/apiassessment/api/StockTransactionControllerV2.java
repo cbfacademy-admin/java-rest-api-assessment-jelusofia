@@ -45,8 +45,9 @@ public class StockTransactionControllerV2 {
     }*/
 
 
-    @PostMapping
+    @PostMapping("/add")
     public void addTransaction( @Validated @NonNull @RequestBody StockTransaction transaction){
+        System.err.println(transaction);
         transactionService2.addTransaction(transaction);
     }
     //@valid and @nonnull not working

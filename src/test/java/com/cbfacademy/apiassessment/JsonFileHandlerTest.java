@@ -38,8 +38,9 @@ public class JsonFileHandlerTest {
 
     @Test
     public void toJsonTest() {
-        JsonFileHandler jsonFileHandler = new JsonFileHandler("test.json");
-
+        //JsonFileHandler jsonFileHandler = new JsonFileHandler("test.json");
+        Gson gson = new Gson();
+        jsonFileHandler.setGson(gson);
         // Creating some test data
         List<StockTransaction> transactions = List.of(
                 new StockTransaction(UUID.randomUUID(), "TestProfit", 10, 100.0, 120.0, 5.0, 0.0)
@@ -47,16 +48,20 @@ public class JsonFileHandlerTest {
         );
 
         // Use TypeToken to get the type of List<StockTransaction>
-        Type transactionListType = new TypeToken<List<StockTransaction>>() {}.getType();
+       // Type transactionListType = new TypeToken<List<StockTransaction>>() {}.getType();
 
         // Act
-        String jsonString = jsonFileHandler.toJson(transactions, transactionListType);
+        String jsonString = jsonFileHandler.transactionsListToJson(transactions);
+
+       //assertEquals(transactions);
     }
 
     @Test
     void testReadTransactions() throws IOException {
         List<StockTransaction> expectedTransactions = new ArrayList<>();
-        expectedTransactions.add(new StockTransaction(UUID.randomUUID(), "TestProfit", 10, 100.0, 120.0, 5.0, 0.0));
+        expectedTransactions.add(new StockTransaction(UUID.randomUUID(), "TestProfitone", 10, 100.0, 120.0, 5.0, 0.0));
+
+        jsonFileHandler.setGson(new Gson());
 
         jsonFileHandler.writeTransactions(expectedTransactions);
 
@@ -71,10 +76,13 @@ public class JsonFileHandlerTest {
         JsonFileHandler jsonFileHandler = new JsonFileHandler("test.json");
 
         List<StockTransaction> transactions = List.of(
-            new StockTransaction(UUID.randomUUID(), "TestProfit", 10, 100.0, 120.0, 5.0, 0.0)
+            new StockTransaction(UUID.randomUUID(), "TestProfittwo", 10, 100.0, 120.0, 5.0, 0.0)
         );
+
+        jsonFileHandler.setGson(new Gson());
+
         jsonFileHandler.writeTransactions(transactions);
-        
+
         List<StockTransaction> actualTransactions = jsonFileHandler.readTransactions();
         assertEquals(transactions, actualTransactions);
         //jsonFileHandler.setFileWriter(mockFileWriter);
