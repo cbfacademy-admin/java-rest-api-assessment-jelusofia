@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "id": "9e8e6baf-e4ad-412b-bcd1-bb22aec61571",
+        "name": "oil stocks",
+        "quantity": "500",
+        "buyingPrice": "2001",
+        "sellingPrice": "3000",
+        "commission": "250",
+        "profit":   "499750"
+    },
+    {
+        "id": "e793eca3-01fc-4d29-8ee0-0cfca0c98ed1",
+        "name": "fintech stocks",
+        "quantity": "300",
+        "buyingPrice": "2000",
+        "sellingPrice": "5000",
+        "commission": "450",
+        "profit":   "699550"
+    }
+]
