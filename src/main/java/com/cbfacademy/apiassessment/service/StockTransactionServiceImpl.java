@@ -37,12 +37,12 @@ public class StockTransactionServiceImpl implements StockTransactionService {
     }
     
     @Override
-    public void deleteTransaction(UUID id){
-       return  calculationDao.deleteTransactionById(id);       
+    public int deleteTransaction(UUID id){
+       return  transactionDao.deleteTransactionById(id);       
     }
     @Override
-    public void updateTransaction(UUID id, StockTransaction newClient){
-        //return  calculationDao.updateCalculationById(id, newClient);       
+    public int updateTransaction(UUID id, StockTransaction newClient){
+        return  transactionDao.updateTransactionById(id, newClient);       
     }//update calculation data by calculation id
     
 }

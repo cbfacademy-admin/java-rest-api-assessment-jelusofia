@@ -12,10 +12,10 @@ public interface StockTransactionService {
 
     Optional<StockTransaction> getTransactionById(UUID id);
 
-    void addTransaction(StockTransaction transaction);
+    int addTransaction(StockTransaction transaction);
     
-    void deleteTransaction(UUID id);
+    int deleteTransaction(UUID id);
 
-    void updateTransaction(UUID id, StockTransaction transaction);
+    int updateTransaction(UUID id, StockTransaction transaction);
 
 }

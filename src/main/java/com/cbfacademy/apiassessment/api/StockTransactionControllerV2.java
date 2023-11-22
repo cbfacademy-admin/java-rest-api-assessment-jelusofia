@@ -45,7 +45,7 @@ public class StockTransactionControllerV2 {
     }*/
 
 
-    @PostMapping("/add")
+    @PostMapping
     public void addTransaction( @Validated @NonNull @RequestBody StockTransaction transaction){
         System.err.println(transaction);
         transactionService2.addTransaction(transaction);
