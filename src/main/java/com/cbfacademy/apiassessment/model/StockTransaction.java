@@ -16,7 +16,7 @@ public class StockTransaction {
 
     double profit;
 
-
+    
     public StockTransaction(UUID id, String name, int quantity, double buyingPrice, double sellingPrice, double commission, double profit){
         this.id = id;
         this.name =name;
@@ -53,7 +53,18 @@ public class StockTransaction {
         return (sellingPrice * quantity) - (buyingPrice * quantity) - commission;
     }
 
-
-
+    //For toString method to use in testing the merge sort algo
+    @Override
+    public String toString() {
+        return "StockTransaction{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", quantity=" + quantity +
+                ", buyingPrice=" + buyingPrice +
+                ", sellingPrice=" + sellingPrice +
+                ", commission=" + commission +
+                ", profit=" + profit +
+                '}';
+    }
 
 }

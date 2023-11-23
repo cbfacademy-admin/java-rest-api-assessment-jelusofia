@@ -9,6 +9,7 @@ import org.junit.jupiter.api.DisplayName;
 
 import com.cbfacademy.apiassessment.model.StockTransaction;
 
+
 @DisplayName(value = "The StockTransaction class should")
 public class StockTransactionTest {
     @Test
@@ -18,12 +19,21 @@ public class StockTransactionTest {
 
         double profit = transaction.calculateProfit();
 
-        assertEquals(950.0, profit, 0.001);
+        assertEquals(195, profit, 0.001);
+    }
+    @Test
+    @DisplayName(value = "calculate a negative profit")
+    public void testCalculateProfit2() {
+        StockTransaction transaction = new StockTransaction(UUID.randomUUID(), "Testprofit2", 10, 120.0, 100.0, 5.0, 0.0);
+
+        double profit = transaction.calculateProfit();
+
+        assertEquals(-205, profit, 0.001);
     }
 
     @Test
     @DisplayName(value = "have working getters - Part I") 
-    public void testGetters1() { //excpet getProfit
+    public void testGetters1() { 
         UUID id = UUID.randomUUID();
         String name = "XYZ";
         int quantity = 5;
@@ -51,11 +61,11 @@ public class StockTransactionTest {
     @DisplayName(value = "have working getters - Part II") 
     public void testGetters2() { //excpet getProfit
         UUID id = UUID.randomUUID();
-        String name = "TestName";
+        String name = "Test3";
         int quantity = 5;
         double buyingPrice = 50.0;
-        double sellingPrice = 60.0;
-        double commission = 2.0;
+        double sellingPrice = 20.0;
+        double commission = 5.0;
 
         StockTransaction transaction = new StockTransaction(id, name, quantity, buyingPrice, sellingPrice, commission, 0.0);
 
@@ -78,8 +88,8 @@ public class StockTransactionTest {
     @Test
     @DisplayName(value = "have a working Profit getter") 
     public void testGetProfit() {
-        double profit = 123.45;
-        StockTransaction transaction = new StockTransaction(UUID.randomUUID(), "TestProfit", 10, 100.0, 120.0, 5.0, profit);
+        double profit = 1245.0;
+        StockTransaction transaction = new StockTransaction(UUID.randomUUID(), "TestProfit", 10, 100.0, 225.0, 5.0, profit);
 
         double actualProfit = transaction.getProfit();
 
