@@ -1,10 +1,9 @@
+//packages
 package com.cbfacademy.apiassessment.model;
-
+//imports
 import java.util.UUID;
-/*ToDo's:
-- add validation
-- add comments
-*/
+
+//This class
 
 public class StockTransaction {
     private final UUID id; //transaction UUID
