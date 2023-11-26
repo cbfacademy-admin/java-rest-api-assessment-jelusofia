@@ -1,61 +1,28 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/iDPpP-d0)
-# **Java API Assessment**
+# **Stock Profit and Loss Java API using Springboot**
+---
+## **Overview**
+A profit and loss statement is a financial report that provides a summary of revenues, expenses and profit or losses.
 
-## **Introduction**
-Dive into the world of API development using Java and SpringBoot. We're handing over a skeleton codebase; your challenge is to shape a top-notch API from it.
+For the context of stocks in this project, it simply shows the profit or loss from buying and selling stocks.
+You can use this API to:
+1. Calculate the Profit or Loss
+2. Save a stock transaction
+3. View the details of a stock transaction using id
+4. See all stock transactions
+5. Delete a stock transaction
+6. Update the details of a stock transaction
 
-You can build any API of your choosing, but it must include the following:
+You can go to [Usage](#usage) for more details on how to use eahc of these functionalities.
 
-1. At least one algorithm
-1. Unit test at least one class
-1. Store the data in a JSON file 
-1. Exception handling 
-1. Evidence of inheritance
-1. Good use of HTTP Protocols - methods, request and response, have full CRUD operations supported 
-1. Documentation
-
-### **Learning Outcomes:**
-
-By the end of this assessment, you should be able to:
-
-1. **Design and Architect APIs**: Get to grips with the nitty-gritty of curating a top-quality API, focusing on data flow and endpoint interactions.
-1. **Implement Best Practices**: Showcase your adherence to Java & SpringBoot coding standards, error handling, and optimal project structure.
-1. **Code Integration**: Seamlessly combine your creations with the provided skeleton codebase.
-1. **Exception Management**: Efficiently handle exceptions, ensuring your API remains sturdy and dependable.
-
-Onward with this assessment, you're set for a deep dive into API development with Java and SpringBoot.
-
-## **Design & Requirements**
-
-### **Design Considerations:**
-- **API Flow**: Map out your API's progression, from endpoints to their functionalities.
-
-### **Requirements List:**
-- **Core**: Make use of Java and SpringBoot.
-- **End Points**: Ensure they are detailed and fully operational.
-- **Error Handling**: Your API should handle mishaps gracefully and return informative feedback.
-
-### **Learning Outcomes:**
-- Acknowledge the pivotal role of a focused design in APIs.
-- See firsthand how a detailed requirements list can pave the way for successful development.
-
-## **Repository Management**
-
-- **Consistent Commits**: Commit often, capturing your progress and thought process.
-- **README**: Not just an afterthought. Fill it with the essence of your API, setup instructions, and other salient details.
-
-### **Learning Outcomes:**
-- Hone your skills in effective version control.
-- Recognise the value of a well-curated repository.
-
-## **Code Quality & Structure**
-
-- **Best Practices**: Stick to Java and SpringBoot best practices and conventions.
-- **Modularity**: Your code should be modular, reusable, and easily comprehensible.
-
-#### **Learning Outcomes:**
-- Craft clean, efficient, and maintainable code.
-- Harness Java and SpringBoot to the fullest.
+---
+## Table of Contents
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+- [Endpoints](#endpoints)
+- [Usage](#usage)
+- [Tests](#tests)
+- [Contributing](#contributing)
 
 ---
 
@@ -178,28 +145,204 @@ You should see console output similar to the following (press `Ctrl + C` to exit
 
 Open your browser and navigate to `http://localhost:8080`.
 
-## **Deliverables**
+---
+## **Endpoints**
+* [POST /api/v3/pnlcalculator](#1-add-a-new-transaction)
+* [GET /api/v3/pnlcalculator/calculateProfit](#2-calculate-profit)
+* [GET /api/v3/pnlcalculator](#3-get-all-transactions)
+* [GET /api/v3/pnlcalculator/{id}](#4-get-transaction-by-id)
+* [DELETE /api/v3/pnlcalculator/{id}](#5-delete-transaction-by-id)
+* [PUT /api/v3/pnlcalculator/{id}](#6-update-transaction-by-id)
+* [GET /api/v3/pnlcalculator/getByProfit](#7-get-sorted-transactions-by-profit)
 
-Ensure that your work is merged to the `main` branch of your GitHub repository by the specified deadline (original or extended). Your solution will assessed based on its state *at that point*; any later commits will **not** be taken into account.
+---
+## **Usage**
+This is the main controller class for handling stock transactions.
+[StockTransactionControllerV3](src/main/java/com/cbfacademy/apiassessment/api/StockTransactionControllerV3.java)
 
-## FAQs
+To use the API, follow these steps:
+Once the application is running You can use postman or swagger-ui (by going to http://localhost:8080/swagger-ui/index.html)
 
-- Q: How can I process JSON in Java?
-    
-    A: There are a number of open-source packages that you can use to manipulate JSON. We recommend [Gson](https://github.com/google/gson), but you can also investigate alternatives like [json-simple](https://github.com/cliftonlabs/json-simple) or [Jackson](https://github.com/FasterXML/jackson-databind/).
+### 1. Add a New Transaction
+**Endpoint: POST /api/v3/pnlcalculator**
 
-- Q: Can I use another IDE I'm more familiar with instead of VS Code, like IntelliJ or Eclipse?
+**Request:**
+```
+{
+    "id": "generated-uuid",
+    "name": "ExampleStock",
+    "quantity": 10,
+    "buyingPrice": 150.0,
+    "sellingPrice": 200.0,
+    "commission": 5.0,
+    "profit": 0.0
+}
+```
+**Example Response:**
+```
+Status: 200 OK
+```
 
-    A: You can if you wish, but only VS Code is formally supported by CBF Academy staff, so you do so at your own risk.
+### 2. Calculate Profit
+**Endpoint: GET /api/v3/pnlcalculator/calculateProfit**
 
-## Top Tips
+**Request:**
+```
+Parameters:
 
-- :camera_flash: Commit frequently and use meaningful commit messages. A granular, well-labelled history becomes an increasingly valuable asset over time.
-- :cactus: Use feature branches. Build the habit of isolating your changes for specific tasks and merging them into your default branch when complete.
-- :vertical_traffic_light: Use consistent naming conventions. Choose easily understandable names and naming patterns for your classes, functions and variables.
-- :triangular_ruler: Keep your code tidy. Using the built-in formatting of VS Code or other IDEs makes your code easier to read and mistakes easier to spot.
-- :books: Read the docs. Whether via Intellisense in your IDE, or browsing online documentation, build a clear understanding of the libraries your code leverages.
-- :calendar: Don't wait until the last minute. Plan your work early and make the most of the time available to complete the assessment and avoid pre-deadline palpitations.
-- :sos: Ask. :clap: For. :clap: Help! :clap: Your mentors, instructors and assistants are literally here to support you, so *make use of them* - don't sit and struggle in silence.
+name (String): Name of the stock
+quantity (Integer): Quantity of stocks
+buyingPrice (Double): Buying price per stock
+sellingPrice (Double): Selling price per stock
+commission (Double): Commission per transaction
+```
+**Example Response:**
+```
+Status: 200 OK
+Response Body: 250.0
+```
 
-Best of luck! Remember, it's not just about the destination; it's the journey. Happy coding! 🚀
+### 3. Get All Transactions
+**Endpoint: GET /api/v3/pnlcalculator**
+
+**Example Response:**
+```
+Status: 200 OK
+Response Body: 
+[
+    {
+        "id": "generated-uuid-1",
+        "name": "ExampleStock1",
+        "quantity": 10,
+        "buyingPrice": 150.0,
+        "sellingPrice": 200.0,
+        "commission": 5.0,
+        "profit": 250.0
+    },
+    {
+        "id": "generated-uuid-2",
+        "name": "ExampleStock2",
+        "quantity": 15,
+        "buyingPrice": 120.0,
+        "sellingPrice": 180.0,
+        "commission": 4.0,
+        "profit": 200.0
+    },
+    ...
+]
+
+```
+
+### 4.  Get Transaction by ID
+**Endpoint: GET /api/v3/pnlcalculator/{id}**
+
+**Example Response:**
+```
+Status: 200 OK
+Response Body: 
+{
+    "id": "generated-uuid",
+    "name": "ExampleStock",
+    "quantity": 10,
+    "buyingPrice": 150.0,
+    "sellingPrice": 200.0,
+    "commission": 5.0,
+    "profit": 250.0
+}
+
+```
+
+### 5.  Delete Transaction by ID
+**Endpoint: DELETE /api/v3/pnlcalculator/{id}**
+
+**Example Response:**
+```
+Status: 200 OK
+```
+
+### 6.  Update Transaction by ID
+**Endpoint: PUT /api/v3/pnlcalculator/{id}**
+
+**Request:**
+```
+{
+    "id": "generated-uuid",
+    "name": "UpdatedExampleStock",
+    "quantity": 12,
+    "buyingPrice": 160.0,
+    "sellingPrice": 220.0,
+    "commission": 6.0,
+    "profit": 320.0
+}
+```
+
+**Example Response:**
+```
+Status: 200 OK
+```
+
+### 7.  Get Sorted Transactions by Profit
+**Endpoint: GET /api/v3/pnlcalculator/getByProfit**
+
+**Example Response:**
+```
+Status: 200 OK
+Response Body: 
+[
+    {
+        "id": "generated-uuid-2",
+        "name": "ExampleStock2",
+        "quantity": 15,
+        "buyingPrice": 120.0,
+        "sellingPrice": 180.0,
+        "commission": 4.0,
+        "profit": 200.0
+    },
+    {
+        "id": "generated-uuid-1",
+        "name": "ExampleStock1",
+        "quantity": 10,
+        "buyingPrice": 150.0,
+        "sellingPrice": 200.0,
+        "commission": 5.0,
+        "profit": 250.0
+    },
+    ...
+]
+```
+
+---
+## **Tests**
+### **Running Tests**
+1. Open a terminal in the project directory
+2. Execute the following command
+Then run the following command in your terminal.
+```
+./mvnw clean test 
+```
+If you are on Windows, run this command instead:
+```
+mvnw.cmd clean test
+```
+### **Test Information**
+There are three test files [AppTests.java](src\test\java\com\cbfacademy\apiassessment\AppTests.java) , [StockTransactionTest.java](src\test\java\com\cbfacademy\apiassessment\StockTransactionTest.java) and [JsonHandlerTest.java](src\test\java\com\cbfacademy\apiassessment\JsonFileHandlerTest.java)
+---
+## **Contributing**
+Contributions are welcome! Here's how you can get involved:
+1. Fork the repository to your GitHub account.
+2. Clone the forked repository to your local machine, if you haven't already.
+3. Create a new branch for your feature or bug fix.
+``` 
+git checkout -b feature-name
+```
+4. Make your changes and commit them with a descriptive commit message.
+``` 
+git commit -m "Add feature-name"
+```
+5. Push your changes to your fork on GitHub.
+``` 
+git push origin feature-name
+```
+6. Open a pull request on the original repository. Include the folowing in your request:
+* Provide a clear title and description for your changes.
+* Reference any related issues or discussions.
