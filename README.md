@@ -157,11 +157,13 @@ Open your browser and navigate to `http://localhost:8080`.
 
 ---
 ## **Usage**
-This is the main controller class for handling stock transactions.
+This is the main controller class for handling stock transactions:
 [StockTransactionControllerV3](src/main/java/com/cbfacademy/apiassessment/api/StockTransactionControllerV3.java)
 
 To use the API, follow these steps:
-Once the application is running You can use postman or swagger-ui (by going to http://localhost:8080/swagger-ui/index.html)
+1. Once the application is running you can use swagger-ui, by navigating to http://localhost:8080/swagger-ui/index.html, to access the documentation for this API
+2. Using postman
+    * Input the URL ```localhost:8080/``` followed by the endpoint for the functionality you wnat to use
 
 ### 1. Add a New Transaction
 **Endpoint: POST /api/v3/pnlcalculator**
@@ -325,7 +327,8 @@ If you are on Windows, run this command instead:
 mvnw.cmd clean test
 ```
 ### **Test Information**
-There are three test files [AppTests.java](src\test\java\com\cbfacademy\apiassessment\AppTests.java) , [StockTransactionTest.java](src\test\java\com\cbfacademy\apiassessment\StockTransactionTest.java) and [JsonHandlerTest.java](src\test\java\com\cbfacademy\apiassessment\JsonFileHandlerTest.java)
+There are three test files [AppTests.java](src\test\java\com\cbfacademy\apiassessment\AppTests.java), [StockTransactionTest.java](src\test\java\com\cbfacademy\apiassessment\StockTransactionTest.java) and [JsonHandlerTest.java](src\test\java\com\cbfacademy\apiassessment\JsonFileHandlerTest.java)
+
 ---
 ## **Contributing**
 Contributions are welcome! Here's how you can get involved:
