@@ -12,7 +12,7 @@ You can use this API to:
 5. Delete a stock transaction
 6. Update the details of a stock transaction
 
-You can go to [Usage](#usage) for more details on how to use eahc of these functionalities.
+You can go to [Usage](#usage) for more details on how to use each of these functionalities.
 
 ---
 ## Table of Contents
@@ -163,7 +163,7 @@ This is the main controller class for handling stock transactions:
 To use the API, follow these steps:
 1. Once the application is running you can use swagger-ui, by navigating to http://localhost:8080/swagger-ui/index.html, to access the documentation for this API
 2. Using postman
-    * Input the URL ```localhost:8080/``` followed by the endpoint for the functionality you wnat to use
+    * Input the URL `http://localhost:8080` followed by the endpoint for the functionality you wnat to use
 
 ### 1. Add a New Transaction
 **Endpoint: POST /api/v3/pnlcalculator**
