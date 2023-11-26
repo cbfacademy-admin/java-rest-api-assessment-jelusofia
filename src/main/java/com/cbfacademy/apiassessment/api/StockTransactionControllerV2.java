@@ -11,6 +11,10 @@ import org.springframework.validation.annotation.Validated;
 import com.cbfacademy.apiassessment.model.StockTransaction;
 import com.cbfacademy.apiassessment.service.StockTransactionService;
 import com.cbfacademy.apiassessment.service.StockTransactionServiceImpl;
+
+/*VERSION 2 - Spring Boot RESTful API controller class
+ * for handling HTTP requests related to stock transactions
+*/
 @SpringBootApplication
 @RequestMapping("api/v2/pnlcalculator")
 @RestController
@@ -22,7 +26,7 @@ public class StockTransactionControllerV2 {
         this.transactionService2 = transactionService2;
     }
 
-    @GetMapping("/calculateProfit")
+    @GetMapping("/calculateProfit")//HTTP GET requests to return the calculated profit without adding a new transaction.
     public double calculateProfit(
             @RequestParam String name,
             @RequestParam double sellingPrice,
@@ -33,40 +37,28 @@ public class StockTransactionControllerV2 {
         return transaction.calculateProfit();
     }
 
-   /*  @GetMapping("/orderByPrice") //use algo
-    public double calculateProfit(
-            @RequestParam String name,
-            @RequestParam double sellingPrice,
-            @RequestParam int quantity,
-            @RequestParam double buyingPrice,
-            @RequestParam double commission) {
-        StockTransaction transaction = new StockTransaction(UUID.randomUUID(), name, quantity, buyingPrice, sellingPrice, commission, 0.0);
-        return transaction.calculateProfit();
-    }*/
 
-
-    @PostMapping
+    @PostMapping //HTTP POST requests to add a new transaction
     public void addTransaction( @Validated @NonNull @RequestBody StockTransaction transaction){
         System.err.println(transaction);
         transactionService2.addTransaction(transaction);
     }
-    //@valid and @nonnull not working
 
-    @GetMapping
+    @GetMapping//HTTP GET requests to retrieve all transactions.
     public List<StockTransaction> getAllTransactions() {
         return transactionService2.getAllTransactions();
     }
 
-    @GetMapping(path = "{id}")
+    @GetMapping(path = "{id}")//HTTP GET requests to retrieve a transaction by its ID.
     public StockTransaction getTransactionById2(@PathVariable("id") UUID id) {
         return transactionService2.getTransactionById(id)
                 .orElse(null);
     }
-    @DeleteMapping(path = "{id}")
+    @DeleteMapping(path = "{id}")//HTTP DELETE requests to delete a transaction by its ID.
     public void deleteTransactionById2(@PathVariable("id") UUID id) {
         transactionService2.deleteTransaction(id);
     }
-    @PutMapping(path = "{id}")
+    @PutMapping(path = "{id}")//HTTP PUT requests to update a transaction by its ID.
     public void updateCalculation2(@PathVariable("id") UUID id, @Validated @NonNull @RequestBody StockTransaction transactionToUpdate ) {
         transactionService2.updateTransaction(id, transactionToUpdate);
     }

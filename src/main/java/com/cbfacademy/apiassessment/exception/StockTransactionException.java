@@ -1,5 +1,7 @@
 package com.cbfacademy.apiassessment.exception;
 
+//Exception Handling class
+//Future developments: finish implementing the methods
 public class StockTransactionException extends RuntimeException {
     
   //Data validation exceptions 
