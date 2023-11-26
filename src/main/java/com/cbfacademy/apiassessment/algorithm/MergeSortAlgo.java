@@ -11,17 +11,19 @@ public class MergeSortAlgo {
     
 
     public static void mergeSortAlgo(List<StockTransaction> transactions){
-        if (transactions.size() <= 1) {
+        if (transactions.size() <= 1) { //if the list of transactions have 1 or less elements, then it doesn't need to be sorted
             return;
         }
 
-        int middle = transactions.size()/2;
-        List<StockTransaction> left = transactions.subList(0, middle);
-        List<StockTransaction> right = transactions.subList(middle,transactions.size());
+        int middle = transactions.size()/2; //dividing the list in half and assigning 
+        List<StockTransaction> left = transactions.subList(0, middle); //assigning one half as left
+        List<StockTransaction> right = transactions.subList(middle,transactions.size());//the other as right
 
-        mergeSortAlgo(left);
+        //applying the algo to each half
+        mergeSortAlgo(left); 
         mergeSortAlgo(right);
 
+        //merging the halves using the merge method
         merge(transactions, left, right);
     }
 
@@ -30,6 +32,7 @@ public class MergeSortAlgo {
         int j = 0;
         int k = 0;
 
+        //comparing methods by looking at their proft vaules and id for transactions where the profit is the same 
         while (i < left.size() && j < right.size()) {
             if (left.get(i).getProfit() < right.get(j).getProfit() ||
                (left.get(i).getProfit() == right.get(j).getProfit() && 
@@ -49,6 +52,8 @@ public class MergeSortAlgo {
         }
 
     }
+
+    //This main method is for testing, it creates a list of StockTransaction objects and prints a list of the created transactions before and after sorting
     public static void main(String[]args){ 
         List<StockTransaction> transactions = new ArrayList<>(Arrays.asList(
             new StockTransaction(UUID.randomUUID(), "Example1", 25, 100.0, 120.0, 5.0, 20),
