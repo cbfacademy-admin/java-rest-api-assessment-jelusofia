@@ -3,19 +3,19 @@ package com.cbfacademy.apiassessment.model;
 //imports
 import java.util.UUID;
 
-//This class
+//This class is a model class for this project, it models the Stock Transaction use in the calculation of Profit and Loss
+//Future development: add data validation
 
 public class StockTransaction {
     private final UUID id; //transaction UUID
-    private final String name; //
-    private final int quantity; //
-    private final double buyingPrice;
-    private final double sellingPrice;
-    private final double commission;
+    private final String name; //name of stocks
+    private final int quantity; //number of shares = quantity
+    private final double buyingPrice; // buying price of stocks
+    private final double sellingPrice; // selling price of stocks
+    private final double commission; //broker's commission
+    double profit; //profit/loss calculation
 
-    double profit;
-
-    
+    //Constructor
     public StockTransaction(UUID id, String name, int quantity, double buyingPrice, double sellingPrice, double commission, double profit){
         this.id = id;
         this.name =name;
@@ -26,6 +26,7 @@ public class StockTransaction {
         this.profit = calculateProfit();
     }
 
+    //Getters
     public UUID getId(){
         return id;
     }
@@ -48,11 +49,12 @@ public class StockTransaction {
         return profit;
     }
 
+    //Profit Calculation 
     public double calculateProfit() {
         return (sellingPrice * quantity) - (buyingPrice * quantity) - commission;
     }
 
-    //For toString method to use in testing the merge sort algo
+    //toString method to use in testing the merge sort algorithm in the MergeSortAlgo.java
     @Override
     public String toString() {
         return "StockTransaction{" +
