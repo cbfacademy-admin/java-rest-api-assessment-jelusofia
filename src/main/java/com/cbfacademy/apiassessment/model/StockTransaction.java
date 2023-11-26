@@ -1,6 +1,4 @@
-//packages
 package com.cbfacademy.apiassessment.model;
-//imports
 import java.util.UUID;
 
 //This class is a model class for this project, it models the Stock Transaction use in the calculation of Profit and Loss
